@@ -25,4 +25,3 @@ StateManagment: Notifier;
 
 ## Навигация
 <img width="860" height="415" alt="image" src="https://github.com/user-attachments/assets/eb537ad1-db72-4511-bc7c-6ebc3e85b02c" />
-
