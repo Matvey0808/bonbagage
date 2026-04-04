@@ -1,3 +1,4 @@
+import 'package:bonbagage/view/journeys_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Material(child: Center(child: Text('BonBagage'))),
+      home: JourneysView(),
     );
   }
 }
