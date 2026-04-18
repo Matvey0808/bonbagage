@@ -1,3 +1,4 @@
+import 'package:bonbagage/widget/dialog_edit_widget.dart';
 import 'package:bonbagage/widget/dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonbagage/widget/journeys_card_widget.dart';
@@ -27,14 +28,29 @@ class JourneysView extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black12,
-        elevation: 0,
-        highlightElevation: 0,
-        onPressed: () {
-          journeyDialog(context);
-        },
-        child: const Icon(Icons.add, color: Colors.black54, size: 25),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: Colors.black12,
+            elevation: 0,
+            highlightElevation: 0,
+            onPressed: () {
+              journeyDialog(context);
+            },
+            child: const Icon(Icons.add, color: Colors.black54, size: 25),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            backgroundColor: Colors.black12,
+            elevation: 0,
+            highlightElevation: 0,
+            onPressed: () {
+              journeyEditDialog(context);
+            },
+            child: Icon(Icons.edit, color: Colors.black54, size: 25),
+          ),
+        ],
       ),
     );
   }
