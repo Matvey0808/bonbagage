@@ -16,7 +16,7 @@ Flutter: 3.38.7
 Dart: 3.10.7
 
 ### Стек разработки
-StateManagment: Cubit/Bloc;  
+StateManagment: Notifier;  
 Навигация: Navigation 2.0;  
 Хранение данныx: Files;  
 
