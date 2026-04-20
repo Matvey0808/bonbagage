@@ -1,6 +1,12 @@
+import 'package:bonbagage/bloc/journeys_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void journeyDialog(BuildContext context) {
+  final TextEditingController _controllerCity = TextEditingController();
+  final TextEditingController _controllerEndDate = TextEditingController();
+  final TextEditingController _controllerStartDate = TextEditingController();
+
   const BorderRadius border = BorderRadius.all(Radius.circular(12));
 
   final textFieldDecoration = InputDecoration(
@@ -23,37 +29,63 @@ void journeyDialog(BuildContext context) {
 
   showDialog(
     context: context,
-    builder: (BuildContext context) => AlertDialog(
-      actions: <Widget>[
-        SizedBox(height: 10),
-        TextField(cursorColor: Colors.black26, decoration: textFieldDecoration),
-        SizedBox(height: 10),
-        TextField(cursorColor: Colors.black26, decoration: textFieldDecoration),
-        SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ElevatedButton(
-              style: elevatedButtonStyle,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Отмена",
-                style: TextStyle(fontSize: 14, color: Colors.black54),
+    builder: (dialogContext) => BlocProvider.value(
+      value: context.read<JourneysCubit>(),
+      child: AlertDialog(
+        actions: <Widget>[
+          SizedBox(height: 10),
+          TextField(
+            controller: _controllerCity,
+            cursorColor: Colors.black26,
+            decoration: textFieldDecoration,
+          ),
+          SizedBox(height: 10),
+          TextField(
+            controller: _controllerStartDate,
+            cursorColor: Colors.black26,
+            decoration: textFieldDecoration,
+          ),
+          SizedBox(height: 10),
+          TextField(
+            controller: _controllerEndDate,
+            cursorColor: Colors.black26,
+            decoration: textFieldDecoration,
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Отмена",
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
+                ),
               ),
-            ),
-            ElevatedButton(
-              style: elevatedButtonStyle,
-              onPressed: () {},
-              child: Text(
-                "Добавить",
-                style: TextStyle(fontSize: 14, color: Colors.black54),
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  context.read<JourneysCubit>().addJourneys(
+                    _controllerCity.text,
+                    _controllerStartDate.text,
+                    _controllerEndDate.text,
+                  );
+                  _controllerCity.clear();
+                  _controllerStartDate.clear();
+                  _controllerEndDate.clear();
+                },
+                child: Text(
+                  "Добавить",
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     ),
   );
 }
