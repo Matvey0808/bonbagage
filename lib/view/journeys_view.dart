@@ -25,7 +25,7 @@ class JourneysView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final obj = state[index];
                     return CardJourneys(
-                      title: obj.title,
+                      city: obj.title,
                       startDate: obj.startDate,
                       endDate: obj.endDate,
                     );
@@ -33,20 +33,15 @@ class JourneysView extends StatelessWidget {
                 );
               },
             ),
-            floatingActionButton: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                FloatingActionButton(
-                  backgroundColor: Colors.black12,
-                  elevation: 0,
-                  highlightElevation: 0,
-                  onPressed: () {
-                    final cubit = context.read<JourneysCubit>();
-                    returnDialogCubit(context, cubit);
-                  },
-                  child: const Icon(Icons.add, color: Colors.black54, size: 25),
-                ),
-              ],
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.black12,
+              elevation: 0,
+              highlightElevation: 0,
+              onPressed: () {
+                final cubit = context.read<JourneysCubit>();
+                returnDialogCubit(context, cubit);
+              },
+              child: const Icon(Icons.add, color: Colors.black54, size: 25),
             ),
           );
         },

@@ -1,32 +1,55 @@
 import 'package:flutter/material.dart';
 
-void journeyEditDialog(BuildContext context) {
-  const BorderRadius border = BorderRadius.all(Radius.circular(12));
-  const BorderSide borderSide = BorderSide(width: 3, color: Colors.black26);
-  const TextStyle textStyleHintText = TextStyle(
-    fontSize: 16,
-    color: Colors.black54,
-  );
-
-  final focusedBorderTextField = OutlineInputBorder(
-    borderRadius: border,
-    borderSide: borderSide,
-  );
-
-  final enableBorderTextField = OutlineInputBorder(
-    borderRadius: border,
-    borderSide: borderSide,
-  );
-
-  final elevatedButtonStyle = ElevatedButton.styleFrom(
-    backgroundColor: Colors.black12,
-    shape: RoundedRectangleBorder(borderRadius: border),
-    padding: EdgeInsets.only(left: 10, right: 10),
-  );
-
+void returnEditDialogCubit(BuildContext context, String city, String startDate, String endDate) {
   showDialog(
     context: context,
-    builder: (BuildContext context) => AlertDialog(
+    builder: (editDialogContext) {
+      return JourneyEditDialog(
+        city: city,
+        startDate: startDate,
+        endDate: endDate
+      );
+    },
+  );
+}
+
+class JourneyEditDialog extends StatelessWidget {
+  const JourneyEditDialog({super.key, required this.city, required this.startDate, required this.endDate});
+
+  final String city;
+  final String startDate;
+  final String endDate;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextEditingController _controllerCityEdit = TextEditingController(text: city);
+    final TextEditingController _controllerStartDateEdit = TextEditingController(text: startDate);
+    final TextEditingController _controllerEndDateEdit = TextEditingController(text: endDate);
+
+    final BorderRadius border = BorderRadius.all(Radius.circular(12));
+    final BorderSide borderSide = BorderSide(width: 3, color: Colors.black26);
+    final TextStyle textStyleHintText = TextStyle(
+      fontSize: 16,
+      color: Colors.black54,
+    );
+
+    final focusedBorderTextField = OutlineInputBorder(
+      borderRadius: border,
+      borderSide: borderSide,
+    );
+
+    final enableBorderTextField = OutlineInputBorder(
+      borderRadius: border,
+      borderSide: borderSide,
+    );
+
+    final elevatedButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: Colors.black12,
+      shape: RoundedRectangleBorder(borderRadius: border),
+      padding: EdgeInsets.only(left: 10, right: 10),
+    );
+
+    return AlertDialog(
       actions: <Widget>[
         Row(
           children: [
@@ -66,9 +89,10 @@ void journeyEditDialog(BuildContext context) {
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
+            controller: _controllerCityEdit,
             cursorColor: Colors.black26,
             decoration: InputDecoration(
-              hintText: "Название",
+              hintText: "City",
               hintStyle: textStyleHintText,
               focusedBorder: focusedBorderTextField,
               enabledBorder: enableBorderTextField,
@@ -76,6 +100,7 @@ void journeyEditDialog(BuildContext context) {
           ),
           SizedBox(height: 10),
           TextField(
+            controller: _controllerStartDateEdit,
             cursorColor: Colors.black26,
             decoration: InputDecoration(
               hintText: "start date",
@@ -86,6 +111,7 @@ void journeyEditDialog(BuildContext context) {
           ),
           SizedBox(height: 10),
           TextField(
+            controller: _controllerEndDateEdit,
             cursorColor: Colors.black26,
             decoration: InputDecoration(
               hintText: "end date",
@@ -96,6 +122,6 @@ void journeyEditDialog(BuildContext context) {
           ),
         ],
       ),
-    ),
-  );
+    );
+  }
 }

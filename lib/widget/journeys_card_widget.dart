@@ -2,9 +2,14 @@ import 'package:bonbagage/widget/dialog_edit_widget.dart';
 import 'package:flutter/material.dart';
 
 class CardJourneys extends StatelessWidget {
-  const CardJourneys({super.key, this.title, this.startDate, this.endDate});
+  const CardJourneys({
+    super.key,
+    required this.city,
+    required this.startDate,
+    required this.endDate,
+  });
 
-  final title;
+  final city;
   final startDate;
   final endDate;
 
@@ -14,7 +19,7 @@ class CardJourneys extends StatelessWidget {
     final isTable = width >= 600;
     return GestureDetector(
       onLongPress: () {
-        journeyEditDialog(context);
+        returnEditDialogCubit(context, city, startDate, endDate);
       },
       child: Card(
         color: Color(0xFFf2f2f2),
@@ -26,7 +31,7 @@ class CardJourneys extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  title,
+                  city,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
               ),
