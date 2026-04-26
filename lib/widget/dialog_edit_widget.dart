@@ -81,7 +81,10 @@ class JourneyEditDialog extends StatelessWidget {
           children: [
             ElevatedButton(
               style: elevatedButtonStyle,
-              onPressed: () {},
+              onPressed: () {
+                cubit.deleteJourneys(id);
+                Navigator.pop(context);
+              },
               child: Text(
                 "Удалить",
                 style: TextStyle(fontSize: 14, color: Colors.black54),
