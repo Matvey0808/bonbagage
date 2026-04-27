@@ -1,30 +1,29 @@
 import 'package:bonbagage/bloc/journeys_cubit.dart';
 import 'package:flutter/material.dart';
 
-void returnDialogCubit(BuildContext context, JourneysCubit cubit) {
+void showDialogAdd(BuildContext context, JourneysCubit cubit) {
   showDialog(
     context: context,
     builder: (dialogContext) {
-      return JourneyDialog(cubit: cubit);
+      return JourneyDialogAdd(cubit: cubit);
     },
   );
 }
 
-class JourneyDialog extends StatelessWidget {
-  const JourneyDialog({super.key, required this.cubit});
+class JourneyDialogAdd extends StatelessWidget {
+  const JourneyDialogAdd({super.key, required this.cubit});
   final JourneysCubit cubit;
-  
 
   @override
   Widget build(BuildContext context) {
     BorderRadius border = BorderRadius.all(Radius.circular(12));
-  BorderSide borderSide = BorderSide(width: 3, color: Colors.black26);
+    BorderSide borderSide = BorderSide(width: 3, color: Colors.black26);
 
-  final TextEditingController _controllerCity = TextEditingController();
+    final TextEditingController _controllerCity = TextEditingController();
 
-  final TextEditingController _controllerEndDate = TextEditingController();
+    final TextEditingController _controllerEndDate = TextEditingController();
 
-  final TextEditingController _controllerStartDate = TextEditingController();
+    final TextEditingController _controllerStartDate = TextEditingController();
 
     final focusedBorderTextField = OutlineInputBorder(
       borderRadius: border,
@@ -42,38 +41,42 @@ class JourneyDialog extends StatelessWidget {
     );
 
     return AlertDialog(
+      content: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: _controllerCity,
+            cursorColor: Colors.black26,
+            decoration: InputDecoration(
+              hintText: "City",
+              focusedBorder: focusedBorderTextField,
+              enabledBorder: enableBorderTextField,
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            controller: _controllerStartDate,
+            cursorColor: Colors.black26,
+            decoration: InputDecoration(
+              hintText: "start date",
+              focusedBorder: focusedBorderTextField,
+              enabledBorder: enableBorderTextField,
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            controller: _controllerEndDate,
+            cursorColor: Colors.black26,
+            decoration: InputDecoration(
+              hintText: "end date",
+              focusedBorder: focusedBorderTextField,
+              enabledBorder: enableBorderTextField,
+            ),
+          ),
+        ],
+      ),
       actions: <Widget>[
-        SizedBox(height: 10),
-        TextField(
-          controller: _controllerCity,
-          cursorColor: Colors.black26,
-          decoration: InputDecoration(
-            hintText: "City",
-            focusedBorder: focusedBorderTextField,
-            enabledBorder: enableBorderTextField
-          ),
-        ),
-        SizedBox(height: 10),
-        TextField(
-          controller: _controllerStartDate,
-          cursorColor: Colors.black26,
-          decoration: InputDecoration(
-            hintText: "start date",
-            focusedBorder: focusedBorderTextField,
-            enabledBorder: enableBorderTextField
-          )
-        ),
-        SizedBox(height: 10),
-        TextField(
-          controller: _controllerEndDate,
-          cursorColor: Colors.black26,
-          decoration: InputDecoration(
-            hintText: "end date",
-            focusedBorder: focusedBorderTextField,
-            enabledBorder: enableBorderTextField
-          ),
-        ),
-        SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
