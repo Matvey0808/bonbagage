@@ -21,19 +21,11 @@ class JourneysView extends StatelessWidget {
                   debugPrint("Список пуст");
                 }
                 return state.isEmpty
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: Text(
-                              "Путешествий нет",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                        ],
+                    ? Center(
+                        child: Text(
+                          "Путешествий нет",
+                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                        ),
                       )
                     : ListView.builder(
                         itemCount: state.length,
