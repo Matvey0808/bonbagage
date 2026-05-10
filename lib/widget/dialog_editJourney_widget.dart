@@ -1,16 +1,19 @@
+import 'package:bonbagage/bloc/bags_cubit.dart';
 import 'package:flutter/material.dart';
 
-void showEditJourneyDialog(BuildContext context) {
+void showEditJourneyDialog(BuildContext context, BagsCubit cubit) {
   showDialog(
     context: context,
     builder: (dialogContext) {
-      return DialogEditjourneyWidget();
+      return DialogEditjourneyWidget(cubit: cubit);
     },
   );
 }
 
 class DialogEditjourneyWidget extends StatelessWidget {
-  const DialogEditjourneyWidget({super.key});
+  const DialogEditjourneyWidget({super.key, required this.cubit});
+
+  final BagsCubit cubit;
 
   static const BorderRadius border = BorderRadius.all(Radius.circular(12));
   static const BorderSide borderSide = BorderSide(
@@ -35,8 +38,11 @@ class DialogEditjourneyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _controllerTitle = TextEditingController();
+
     return AlertDialog(
       content: TextField(
+        controller: _controllerTitle,
         cursorColor: Colors.black26,
         decoration: InputDecoration(
           focusedBorder: focusedBorderTextField,
@@ -54,7 +60,13 @@ class DialogEditjourneyWidget extends StatelessWidget {
         ),
         ElevatedButton(
           style: elevatedButtonStyle,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            cubit.addBags(
+              _controllerTitle.text
+            );
+            _controllerTitle.clear();
+            Navigator.pop(context);
+          },
           child: Text(
             "Добавить",
             style: TextStyle(fontSize: 14, color: Colors.black54),
