@@ -37,7 +37,7 @@ class EditJourneysView extends StatelessWidget {
                   itemCount: state.length,
                   itemBuilder: (context, index) {
                     final obj = state[index];
-                    return BagsCardWidget(bags: obj);
+                    return BagsCardWidget(bag: obj);
                   },
                 );
               },
