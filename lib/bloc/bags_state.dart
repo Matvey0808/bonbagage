@@ -8,16 +8,18 @@ class BagsState {
   BagsState({
     required this.id,
     required this.title,
-    List<Thing>? things
-  }) : things = things ?? [];
+    required this.things
+  });
 
   BagsState copyWith({
     int? id,
-    String? title
+    String? title,
+    List<Thing>? things
   }) {
     return BagsState(
       id: id ?? this.id,
-      title: title ?? this.title
+      title: title ?? this.title,
+      things: things ?? this.things
     );
   }
 }
