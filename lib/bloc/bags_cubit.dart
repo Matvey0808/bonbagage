@@ -40,30 +40,22 @@ class BagsCubit extends Cubit<List<BagsState>> {
     emit(delete);
   }
 
-  void addThingInList(String title, List<Thing> thing, int id) {
-    // Первое что я попробовал.
-    final update = state.map((things) {
-      return things.copyWith(
-        id: idThings,
-        title: title,
-        things: thing
-      );
+  void addThingInList(String title, int id) {
+    final addThing = state.map((thing) {
+      if (thing.id == id) {
+        final thingsList = Thing(
+          id: id,
+          name: title
+        );
+        final List<Thing> updateList = List.from(thing.things)..add(thingsList);
+        final copyThing = thing.copyWith(
+          things: updateList
+        );
+        return copyThing;
+      } else {
+        return thing;
+      }
     }).toList();
-    emit(update);
-
-    // Второе, это я подсмотрел у кого-то в репозитории, но как работает не понял и реализовал я ее неправильно наверное.
-    final updateThings = List<Thing>.from(state)..addAll(thing);
-    // не помню как я эмитил
-    emit([]);
-    // я многое что пробовал, но это то, что я вспомнил, остальное забыл.
-    /*
-    Там вообще в 3-ем решении сначала должен копировать Bags список
-    Потом его обновляем когда добавляем элемент Thing в Bags
-    Там что-то через from я делал и copyWith.
-
-    Я не понимаю как каждому элементу присвоить id как у Bags, типо в списке Bags мы должны еще удалять
-    элементы в списке Things, это как?
-    Может я решения легкого не нашел и все усложняю
-    */
+    emit(addThing);
   }
 }
