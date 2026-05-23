@@ -1,4 +1,5 @@
 import 'package:bonbagage/bloc/bags_state.dart';
+import 'package:bonbagage/model/things_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BagsCubit extends Cubit<List<BagsState>> {
@@ -9,7 +10,8 @@ class BagsCubit extends Cubit<List<BagsState>> {
   void addBags(String title) {
     final newBags = BagsState(
       id: idCounter++,
-      title: title
+      title: title,
+      things: []
     );
 
     emit([...state, newBags]);
@@ -34,6 +36,20 @@ class BagsCubit extends Cubit<List<BagsState>> {
     final List<BagsState> delete = List.from(state);
     delete.removeWhere((bags) => bags.id == id);
 
+    emit(delete);
+  }
+
+  void deleteThings(int id) {
+    final List<BagsState> delete = state.map((bag) {
+      if (bag.things.any((things) => things.id == id)) {
+        List<Thing> deleteThing = List.from((bag.things)..removeWhere((things) => things.id == id));
+        return bag.copyWith(
+          things: deleteThing,
+        );
+      } else {
+        return bag;
+      }
+    }).toList();
     emit(delete);
   }
 }
