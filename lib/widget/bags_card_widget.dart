@@ -40,7 +40,10 @@ class BagsCardWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                  IconButton(
+                    onPressed: () {}, //TODO: implement
+                    icon: Icon(Icons.add)
+                  ),
                 ],
               ),
               Expanded(
@@ -53,7 +56,7 @@ class BagsCardWidget extends StatelessWidget {
                         children: [
                           Text(thing[index]),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {},//TODO: implement
                             child: Icon(Icons.delete, size: 20),
                           )
                         ],
