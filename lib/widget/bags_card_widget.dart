@@ -1,5 +1,6 @@
 import 'package:bonbagage/bloc/bags_cubit.dart';
 import 'package:bonbagage/bloc/bags_state.dart';
+import 'package:bonbagage/widget/dialog_add_thing.dart';
 import 'package:bonbagage/widget/dialog_edit_bags_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +42,9 @@ class BagsCardWidget extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {}, //TODO: implement
+                    onPressed: () {
+                      showDialogAddThing(context, bag);
+                    },
                     icon: Icon(Icons.add)
                   ),
                 ],
