@@ -6,7 +6,6 @@ class BagsCubit extends Cubit<List<BagsState>> {
   BagsCubit() : super([]);
 
   int idCounter = 0;
-  int idThings = 0;
 
   void addBags(String title) {
     final newBags = BagsState(
