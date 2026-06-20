@@ -23,9 +23,8 @@ class BagsCardWidget extends StatelessWidget {
       child: Card(
         color: Color(0xFFf2f2f2),
         child: SizedBox(
-          height: 80,
+          height: 120,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,30 +34,13 @@ class BagsCardWidget extends StatelessWidget {
                     child: Text(
                       bag.title,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      
-                    },
-                    icon: Icon(Icons.add),
-                  ),
+                  IconButton(onPressed: () {}, icon: Icon(Icons.add)),
                 ],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: bag.things.length,
-                  itemBuilder: (context, index) {
-                    final thing = bag.things[index];
-                    return Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(thing.name),
-                    );
-                  },
-                ),
               ),
             ],
           ),
