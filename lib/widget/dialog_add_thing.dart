@@ -23,8 +23,6 @@ class DialogAddThing extends StatelessWidget {
     final BorderRadius border = BorderRadius.all(Radius.circular(12));
     final BorderSide borderSide = BorderSide(width: 3, color: Colors.black26);
 
-    int idThing = 0;
-
     final focusedBorderTextField = OutlineInputBorder(
       borderRadius: border,
       borderSide: borderSide,
@@ -78,13 +76,13 @@ class DialogAddThing extends StatelessWidget {
             ),
             ElevatedButton(
               style: elevatedButtonStyle,
-              onPressed: () => {
+              onPressed: () {
                 cubit.addThingInList(
                   _controllerThing.text,
-                  idThing++
-                ),
-                Navigator.pop(context),
-                _controllerThing.clear()
+                  bags.id
+                );
+                Navigator.pop(context);
+                _controllerThing.clear();
               },
               child: Text(
                 "Добавить",

@@ -6,6 +6,7 @@ class BagsCubit extends Cubit<List<BagsState>> {
   BagsCubit() : super([]);
 
   int idCounter = 0;
+  int idThing = 0;
 
   void addBags(String title) {
     final newBags = BagsState(
@@ -43,12 +44,12 @@ class BagsCubit extends Cubit<List<BagsState>> {
     final addThing = state.map((thing) {
       if (thing.id == id) {
         final thingsList = Thing(
-          id: id,
+          id: DateTime.now().millisecondsSinceEpoch,
           name: title
         );
         final List<Thing> updateList = List.from(thing.things)..add(thingsList);
         final copyThing = thing.copyWith(
-          things: updateList
+          things: updateList,
         );
         return copyThing;
       } else {
