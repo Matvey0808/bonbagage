@@ -18,7 +18,7 @@ class BagsCubit extends Cubit<List<BagsState>> {
           ],
         ),
         BagsState(
-          id: 0,
+          id: 1,
           title: "Сумка",
           things: [
             Thing(id: 7, name: "штаны синие"),
@@ -28,7 +28,7 @@ class BagsCubit extends Cubit<List<BagsState>> {
           ],
         ),
         BagsState(
-          id: 0,
+          id: 2,
           title: "Умывалка",
           things: [
             Thing(id: 11, name: "зубная щетка"),
@@ -39,7 +39,7 @@ class BagsCubit extends Cubit<List<BagsState>> {
         ),
       ]);
 
-  int idCounter = 0;
+  int idCounter = 3;
 
   void addBags(String title) {
     final newBags = BagsState(id: idCounter++, title: title, things: []);
