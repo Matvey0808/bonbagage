@@ -1,4 +1,4 @@
-import 'package:bonbagage/model/journey_model.dart';
+import 'package:bonbagage/bloc/journeys_state.dart';
 import 'package:bonbagage/view/edit_journeys_view.dart';
 import 'package:bonbagage/view/journeys_view.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/editJourney':
-            final journey = settings.arguments as Journey;
+            final journey = settings.arguments as JourneysState;
             return MaterialPageRoute(
               builder: (context) => EditJourneysView(journey: journey),
             );

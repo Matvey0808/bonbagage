@@ -1,12 +1,12 @@
 import 'package:bonbagage/bloc/journeys_cubit.dart';
-import 'package:bonbagage/model/journey_model.dart';
+import 'package:bonbagage/bloc/journeys_state.dart';
 import 'package:bonbagage/utils/helpers.dart';
 import 'package:flutter/material.dart';
 
 void showEditDialog(
   BuildContext context,
   JourneysCubit cubit,
-  Journey journey,
+  JourneysState journey,
 ) {
   showDialog(
     context: context,
@@ -24,7 +24,7 @@ class JourneyEditDialog extends StatefulWidget {
   });
 
   final JourneysCubit cubit;
-  final Journey journey;
+  final JourneysState journey;
 
   @override
   State<JourneyEditDialog> createState() => _JourneyEditDialogState();

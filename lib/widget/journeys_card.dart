@@ -1,5 +1,5 @@
 import 'package:bonbagage/bloc/journeys_cubit.dart';
-import 'package:bonbagage/model/journey_model.dart';
+import 'package:bonbagage/bloc/journeys_state.dart';
 import 'package:bonbagage/widget/dialog_edit_journey.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CardJourneys extends StatelessWidget {
   const CardJourneys({super.key, required this.journey});
 
-  final Journey journey;
+  final JourneysState journey;
 
   @override
   Widget build(BuildContext context) {

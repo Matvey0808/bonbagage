@@ -1,33 +1,26 @@
 import 'package:bloc/bloc.dart';
 import 'package:bonbagage/bloc/journeys_state.dart';
-import 'package:bonbagage/model/journey_model.dart';
 
 class JourneysCubit extends Cubit<List<JourneysState>> {
   JourneysCubit()
     : super([
         JourneysState(
-          journey: Journey(
-            title: "Москва",
-            startDate: "01.01.2026",
-            endDate: "10.01.2026",
-            id: 0,
-          ),
+          title: "Москва",
+          startDate: "01.01.2026",
+          endDate: "10.01.2026",
+          id: 0,
         ),
         JourneysState(
-          journey: Journey(
-            title: "Питер",
-            startDate: "10.02.2026",
-            endDate: "20.02.2026",
-            id: 1,
-          ),
+          title: "Питер",
+          startDate: "10.02.2026",
+          endDate: "20.02.2026",
+          id: 1,
         ),
         JourneysState(
-          journey: Journey(
-            title: "Казань",
-            startDate: "20.03.2026",
-            endDate: "30.03.2026",
-            id: 2,
-          ),
+          title: "Казань",
+          startDate: "20.03.2026",
+          endDate: "30.03.2026",
+          id: 2,
         ),
       ]);
 
@@ -35,12 +28,10 @@ class JourneysCubit extends Cubit<List<JourneysState>> {
 
   void addJourneys(String title, String startDate, String endDate) {
     final newJourneys = JourneysState(
-      journey: Journey(
-        title: title,
-        startDate: startDate,
-        endDate: endDate,
-        id: idCounter,
-      ),
+      title: title,
+      startDate: startDate,
+      endDate: endDate,
+      id: idCounter,
     );
 
     emit([...state, newJourneys]);
@@ -48,14 +39,12 @@ class JourneysCubit extends Cubit<List<JourneysState>> {
 
   void updateJourneys(String title, String startDate, String endDate, int id) {
     final update = state.map((journey) {
-      if (journey.journey.id == id) {
+      if (journey.id == id) {
         return journey.copyWith(
-          journey: Journey(
-            title: title,
-            startDate: startDate,
-            endDate: endDate,
-            id: id,
-          ),
+          title: title,
+          startDate: startDate,
+          endDate: endDate,
+          id: id,
         );
       } else {
         return journey;
@@ -67,7 +56,7 @@ class JourneysCubit extends Cubit<List<JourneysState>> {
 
   void deleteJourneys(int id) {
     final List<JourneysState> delete = List.from(state);
-    delete.removeWhere((journeys) => journeys.journey.id == id);
+    delete.removeWhere((journeys) => journeys.id == id);
 
     emit(delete);
   }

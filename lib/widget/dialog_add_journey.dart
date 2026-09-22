@@ -21,11 +21,6 @@ class DialogAddJourney extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fields = HelpersTextField.dataTextField(
-      controllerTitle: controllerCity,
-      controllerEndDate: controllerEndDate,
-      controllerStartDate: controllerStartDate
-    );
     return AlertDialog(
       content: Column(
         mainAxisAlignment: MainAxisAlignment.end,
