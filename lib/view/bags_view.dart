@@ -1,4 +1,4 @@
-import 'package:bonbagage/widget/thing_card_widget.dart';
+import 'package:bonbagage/widget/bag_card_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,13 +16,19 @@ class BagsView extends StatelessWidget {
       "Пакет"
     ];
 
+    final items = [
+      ["Рубашка", "Брюки", "Футболка"],
+      ["Ноутбук", "Планшет"],
+      ["Кроссовки"]
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: ListView.builder(
           itemCount: things.length,
           itemBuilder: (context, index) {
             final obj = things[index];
-            return BagCardWidget(thing: obj);
+            return BagCardWidget(thing: obj, items: items[index]);
           },
         )
       ),
