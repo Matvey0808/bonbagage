@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ThingCardWidget extends StatelessWidget {
-  const ThingCardWidget({super.key, required this.thing});
+class BagCardWidget extends StatelessWidget {
+  const BagCardWidget({super.key, required this.thing});
 
   final String thing;
 

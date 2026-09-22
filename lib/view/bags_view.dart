@@ -11,9 +11,9 @@ class BagsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final things = [
-      "пакет",
-      "зарядка",
-      "повербанк"
+      "Чемодан",
+      "Рюкзак",
+      "Пакет"
     ];
 
     return Scaffold(
@@ -22,7 +22,7 @@ class BagsView extends StatelessWidget {
           itemCount: things.length,
           itemBuilder: (context, index) {
             final obj = things[index];
-            return ThingCardWidget(thing: obj);
+            return BagCardWidget(thing: obj);
           },
         )
       ),
