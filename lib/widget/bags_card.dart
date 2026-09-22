@@ -60,7 +60,7 @@ class BagsCard extends StatelessWidget {
                           child: GestureDetector(
                             onLongPress: () {
                               final cubit = context.read<BagsCubit>();
-                              showDialogEditThing(context, things.name, cubit, things.id);
+                              showDialogEditThing(context, cubit, bag);
                             },
                             child: Row(
                               children: [

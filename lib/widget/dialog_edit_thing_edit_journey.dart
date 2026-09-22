@@ -1,17 +1,17 @@
 import 'package:bonbagage/bloc/bags_cubit.dart';
+import 'package:bonbagage/bloc/bags_state.dart';
 import 'package:bonbagage/utils/helpers.dart';
 import 'package:flutter/material.dart';
 
 void showDialogEditThing(
   BuildContext context,
-  String thingName,
   BagsCubit cubit,
-  int id,
+  BagsState bag
 ) {
   showDialog(
     context: context,
     builder: (context) {
-      return DialogEditThingEditJourney(thingName: thingName, cubit: cubit, id: id);
+      return DialogEditThingEditJourney(cubit: cubit, bag: bag);
     },
   );
 }
@@ -19,14 +19,12 @@ void showDialogEditThing(
 class DialogEditThingEditJourney extends StatefulWidget {
   const DialogEditThingEditJourney({
     super.key,
-    required this.thingName,
     required this.cubit,
-    required this.id,
+    required this.bag
   });
 
-  final String thingName;
-  final int id;
   final BagsCubit cubit;
+  final BagsState bag;
 
   @override
   State<DialogEditThingEditJourney> createState() => _DialogEditThingEditJourneyState();
@@ -38,7 +36,7 @@ class _DialogEditThingEditJourneyState extends State<DialogEditThingEditJourney>
   @override
   void initState() {
     super.initState();
-    controllerThing = TextEditingController(text: widget.thingName);
+    controllerThing = TextEditingController(text: widget.bag.title);
   }
 
   @override
@@ -70,7 +68,7 @@ class _DialogEditThingEditJourneyState extends State<DialogEditThingEditJourney>
             ElevatedButton(
               style: HelpersElevatedButton.elevatedButtonStyle,
               onPressed: () {
-                widget.cubit.editThing(controllerThing.text, widget.id);
+                widget.cubit.editThing(controllerThing.text, widget.bag.id);
                 Navigator.pop(context);
               },
               child: Text("Сохранить", style: TextStyle(fontSize: 14, color: Colors.black54)),
