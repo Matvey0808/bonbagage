@@ -8,19 +8,6 @@ class HelpersTextField {
       borderRadius: border,
       borderSide: borderSide,
   );
-
-  static List<Map<String, dynamic>> dataTextField({
-    TextEditingController? controllerTitle,
-    TextEditingController? controllerEndDate,
-    TextEditingController? controllerStartDate
-  }) {
-    final List<Map<String, dynamic>> data = [
-      {"hintText": "City", "controller": controllerTitle},
-      {"hintText": "start date", "controller": controllerEndDate},
-      {"hintText": "end date", "controller": controllerStartDate},
-    ];
-    return data;
-  }
 }
 
 class HelpersElevatedButton {

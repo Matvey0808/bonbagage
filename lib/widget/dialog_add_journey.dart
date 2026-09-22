@@ -21,11 +21,12 @@ class DialogAddJourney extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List listControllers = [controllerCity, controllerEndDate, controllerStartDate];
     return AlertDialog(
       content: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
-        children: fields.map((element) {
+        children: listControllers.map((element) {
           return Padding(
             padding: EdgeInsets.only(top: 5),
             child: TextField(

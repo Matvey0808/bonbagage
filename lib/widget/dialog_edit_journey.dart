@@ -34,6 +34,7 @@ class _JourneyEditDialogState extends State<JourneyEditDialog> {
   late final TextEditingController controllerCityEdit;
   late final TextEditingController controllerStartDateEdit;
   late final TextEditingController controllerEndDateEdit;
+  late final List listControllers = [controllerCityEdit, controllerStartDateEdit, controllerEndDateEdit];
 
   @override
   void initState() {
@@ -55,12 +56,6 @@ class _JourneyEditDialogState extends State<JourneyEditDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final fields = HelpersTextField.dataTextField(
-      controllerTitle: controllerCityEdit,
-      controllerEndDate: controllerStartDateEdit,
-      controllerStartDate: controllerEndDateEdit,
-    );
-
     return AlertDialog(
       actions: <Widget>[
         Row(
@@ -110,7 +105,7 @@ class _JourneyEditDialogState extends State<JourneyEditDialog> {
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        children: fields.map((element) {
+        children: listControllers.map((element) {
           return Padding(
             padding: EdgeInsets.only(top: 5),
             child: TextField(
