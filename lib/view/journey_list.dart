@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:bonbagage/widget/journeys_card_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class JourneysView extends StatelessWidget {
-  const JourneysView({super.key});
+class JourneysList extends StatelessWidget {
+  const JourneysList({super.key});
 
   @override
   Widget build(BuildContext context) {

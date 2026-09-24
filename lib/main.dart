@@ -1,7 +1,7 @@
 import 'package:bonbagage/bloc/journeys_state.dart';
-import 'package:bonbagage/view/bags_view.dart';
-import 'package:bonbagage/view/edit_journeys_view.dart';
-import 'package:bonbagage/view/journeys_view.dart';
+import 'package:bonbagage/view/journey_bags.dart';
+import 'package:bonbagage/view/journey_edit.dart';
+import 'package:bonbagage/view/journey_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,17 +18,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case '/editJourney':
+          case '/':
+            return MaterialPageRoute(builder: (context) => JourneysList());
+          case '/journey_edit':
             final journey = settings.arguments as JourneysState;
             return MaterialPageRoute(
-              builder: (context) => EditJourneysView(journey: journey),
+              builder: (context) => JourneyEdit(journey: journey),
             );
-            case '/bags':
-            return MaterialPageRoute(
-              builder: (context) => BagsView()
-            );
-          case '/':
-            return MaterialPageRoute(builder: (context) => JourneysView());
+          case '/journey_bags':
+            return MaterialPageRoute(builder: (context) => JourneyBags());
           default:
             throw Exception('not found screen');
         }

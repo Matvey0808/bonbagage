@@ -2,11 +2,11 @@ import 'package:bonbagage/widget/bag_card_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: const BagsView()));
+  runApp(MaterialApp(home: const JourneyBags()));
 }
 
-class BagsView extends StatelessWidget {
-  const BagsView({super.key});
+class JourneyBags extends StatelessWidget {
+  const JourneyBags({super.key});
 
   @override
   Widget build(BuildContext context) {

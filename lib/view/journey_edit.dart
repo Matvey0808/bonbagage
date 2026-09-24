@@ -6,8 +6,8 @@ import 'package:bonbagage/widget/dialog_editJourney_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EditJourneysView extends StatelessWidget {
-  const EditJourneysView({super.key, required this.journey});
+class JourneyEdit extends StatelessWidget {
+  const JourneyEdit({super.key, required this.journey});
 
   final JourneysState journey;
 
