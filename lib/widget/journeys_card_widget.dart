@@ -1,32 +1,24 @@
 import 'package:bonbagage/bloc/journeys_cubit.dart';
 import 'package:bonbagage/bloc/journeys_state.dart';
-import 'package:bonbagage/widget/dialog_edit_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CardJourneys extends StatelessWidget {
-  const CardJourneys({super.key, required this.journal});
+  const CardJourneys({super.key, required this.journal, required this.cubit});
 
   final JourneysState journal;
+  final JourneysCubit cubit;
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final isTable = width >= 600;
     return GestureDetector(
-      onLongPress: () {
-        final cubit = context.read<JourneysCubit>();
-        showDialogEdit(
-          context,
-          journal.title,
-          journal.startDate,
-          journal.endDate,
-          journal.id,
-          cubit,
-        );
-      },
       onTap: () {
-        Navigator.pushNamed(context, '/journey_edit', arguments: journal);
+        Navigator.pushNamed(
+          context,
+          '/journey_edit',
+          arguments: {'journey': journal, 'cubit': cubit},
+        );
       },
       onDoubleTap: () {
         Navigator.pushNamed(context, '/journey_bags');

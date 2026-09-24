@@ -31,9 +31,8 @@ class JourneysList extends StatelessWidget {
                         itemCount: state.length,
                         itemBuilder: (context, index) {
                           final obj = state[index];
-                          return CardJourneys(
-                            journal: obj,
-                          );
+                          final cubit = context.read<JourneysCubit>();
+                          return CardJourneys(journal: obj, cubit: cubit);
                         },
                       );
               },

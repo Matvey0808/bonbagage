@@ -1,3 +1,4 @@
+import 'package:bonbagage/bloc/journeys_cubit.dart';
 import 'package:bonbagage/bloc/journeys_state.dart';
 import 'package:bonbagage/view/journey_bags.dart';
 import 'package:bonbagage/view/journey_edit.dart';
@@ -21,9 +22,11 @@ class MyApp extends StatelessWidget {
           case '/':
             return MaterialPageRoute(builder: (context) => JourneysList());
           case '/journey_edit':
-            final journey = settings.arguments as JourneysState;
+            final args = settings.arguments as Map<String, dynamic>;
+            final journey = args['journey'] as JourneysState;
+            final cubit = args['cubit'] as JourneysCubit;
             return MaterialPageRoute(
-              builder: (context) => JourneyEdit(journey: journey),
+              builder: (context) => JourneyEdit(journey: journey, cubit: cubit),
             );
           case '/journey_bags':
             return MaterialPageRoute(builder: (context) => JourneyBags());
