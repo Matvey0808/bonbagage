@@ -1,4 +1,5 @@
 import 'package:bonbagage/bloc/journeys_state.dart';
+import 'package:bonbagage/view/bags_view.dart';
 import 'package:bonbagage/view/edit_journeys_view.dart';
 import 'package:bonbagage/view/journeys_view.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,10 @@ class MyApp extends StatelessWidget {
             final journey = settings.arguments as JourneysState;
             return MaterialPageRoute(
               builder: (context) => EditJourneysView(journey: journey),
+            );
+            case '/bags':
+            return MaterialPageRoute(
+              builder: (context) => BagsView()
             );
           case '/':
             return MaterialPageRoute(builder: (context) => JourneysView());

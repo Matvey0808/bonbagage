@@ -25,8 +25,11 @@ class CardJourneys extends StatelessWidget {
           cubit,
         );
       },
-      onDoubleTap: () {
+      onTap: () {
         Navigator.pushNamed(context, '/editJourney', arguments: journal);
+      },
+      onDoubleTap: () {
+        Navigator.pushNamed(context, '/bags');
       },
       child: Card(
         color: Color(0xFFf2f2f2),
